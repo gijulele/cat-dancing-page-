@@ -1,0 +1,167 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(160deg, #ffe8f3 0%, #ffe0c2 100%);
+  color: #4a3428;
+}
+
+button {
+  font-family: inherit;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.page__header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+}
+
+.page__header p {
+  margin: 0;
+  color: #7a5c48;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+.page__stage {
+  flex: 1;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.page__footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #a3806a;
+}
+
+/* 시작/정지 + 속도 컨트롤 */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.toggle-button {
+  min-width: 140px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: #ff8fa3;
+  box-shadow: 0 8px 20px rgba(255, 143, 163, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.toggle-button.is-stopped {
+  background: #6bc7a0;
+  box-shadow: 0 8px 20px rgba(107, 199, 160, 0.4);
+}
+
+.toggle-button:active {
+  transform: scale(0.95);
+}
+
+.speed-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.speed-picker__label {
+  font-size: 0.85rem;
+  color: #7a5c48;
+  font-weight: 600;
+}
+
+.speed-picker__options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.speed-button {
+  min-width: 56px;
+  padding: 8px 14px;
+  border: 2px solid #f8b76d;
+  border-radius: 999px;
+  background: #fff;
+  color: #b3702f;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.speed-button.is-active {
+  background: #f8b76d;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.speed-button:active {
+  transform: scale(0.95);
+}
+
+/* 태블릿/데스크탑에서 조금 더 여유롭게 */
+@media (min-width: 600px) {
+  .page {
+    padding: 48px 24px;
+  }
+
+  .page__stage {
+    gap: 40px;
+  }
+}
+
+/* 작은 모바일 화면 대응 */
+@media (max-width: 360px) {
+  .toggle-button {
+    min-width: 120px;
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .speed-button {
+    min-width: 48px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}

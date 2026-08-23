@@ -1,0 +1,128 @@
+.page-layout {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 48px 24px;
+  background: linear-gradient(160deg, #fff6e5 0%, #ffe8cc 45%, #ffd9b3 100%);
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0 0 8px;
+  color: #6b3f14;
+}
+
+.page-header p {
+  margin: 0;
+  color: #8a6a45;
+  font-size: clamp(14px, 2vw, 17px);
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.animation-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.control-btn {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 2px solid #d97706;
+  background: #fff;
+  color: #b45309;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.control-btn:hover {
+  background: #fff3e0;
+}
+
+.control-btn:active {
+  transform: scale(0.96);
+}
+
+.control-btn:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 2px;
+}
+
+.control-btn-primary {
+  background: #f59e0b;
+  color: #fff;
+  border-color: #f59e0b;
+}
+
+.control-btn-primary:hover {
+  background: #d97706;
+}
+
+.page-footer {
+  color: #a9865c;
+  font-size: 13px;
+}
+
+/* ---------- responsive breakpoints ---------- */
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 32px 16px;
+    gap: 24px;
+  }
+
+  .dancing-cat {
+    width: min(70vw, 260px);
+  }
+
+  .animation-controls {
+    gap: 12px;
+  }
+
+  .control-btn {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-layout {
+    padding: 24px 12px;
+    gap: 20px;
+  }
+
+  .dancing-cat {
+    width: min(75vw, 200px);
+  }
+
+  .animation-controls {
+    flex-direction: column;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dancing-cat {
+    width: 360px;
+  }
+}

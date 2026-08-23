@@ -1,0 +1,132 @@
+.page-layout {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 48px 24px;
+  background: radial-gradient(circle at 20% 20%, #3a2a6d 0%, transparent 55%),
+    radial-gradient(circle at 80% 10%, #1f4a8f 0%, transparent 50%),
+    linear-gradient(160deg, #1c1832 0%, #241c3d 45%, #171327 100%);
+  color: #f4f0ff;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0 0 8px;
+  color: #f4f0ff;
+  text-shadow: 0 0 18px rgba(192, 132, 252, 0.5);
+}
+
+.page-header p {
+  margin: 0;
+  color: #c9bfe8;
+  font-size: clamp(14px, 2vw, 17px);
+}
+
+.page-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.animation-controls {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.control-btn {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 2px solid #a78bfa;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ded4ff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.control-btn:hover {
+  background: rgba(167, 139, 250, 0.2);
+}
+
+.control-btn:active {
+  transform: scale(0.96);
+}
+
+.control-btn:focus-visible {
+  outline: 3px solid #c084fc;
+  outline-offset: 2px;
+}
+
+.control-btn-primary {
+  background: #7c3aed;
+  color: #fff;
+  border-color: #a78bfa;
+}
+
+.control-btn-primary:hover {
+  background: #6d28d9;
+}
+
+.page-footer {
+  color: #9384bd;
+  font-size: 13px;
+}
+
+/* ---------- responsive breakpoints ---------- */
+
+@media (max-width: 768px) {
+  .page-layout {
+    padding: 32px 16px;
+    gap: 24px;
+  }
+
+  .dancing-cat {
+    width: min(70vw, 260px);
+  }
+
+  .animation-controls {
+    gap: 12px;
+  }
+
+  .control-btn {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-layout {
+    padding: 24px 12px;
+    gap: 20px;
+  }
+
+  .dancing-cat {
+    width: min(75vw, 200px);
+  }
+
+  .animation-controls {
+    flex-direction: column;
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .control-btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dancing-cat {
+    width: 360px;
+  }
+}

@@ -1,0 +1,323 @@
+.dancing-cat {
+  width: min(60vw, 320px);
+  margin: 0 auto;
+  will-change: transform;
+}
+
+.cat-svg {
+  overflow: visible;
+}
+
+.cat-body-group,
+.cat-head-group,
+.cat-ear-left,
+.cat-ear-right,
+.cat-tail,
+.cat-paw-left,
+.cat-paw-right,
+.cat-eye,
+.cat-shadow,
+.cat-note {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.cat-note {
+  fill: #c084fc;
+  opacity: 0;
+}
+
+/* ---------- shared keyframes ---------- */
+
+@keyframes ear-twitch-left {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes ear-twitch-right {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes eye-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+
+@keyframes shadow-pulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.18;
+  }
+}
+
+@keyframes note-float {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ---------- groove style ---------- */
+
+@keyframes body-sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg) scale(1);
+  }
+  25% {
+    transform: translateY(-14px) rotate(2deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(0) rotate(4deg) scale(1);
+  }
+  75% {
+    transform: translateY(-14px) rotate(-2deg) scale(1.02);
+  }
+}
+
+@keyframes head-bob {
+  0%,
+  100% {
+    transform: rotate(6deg);
+  }
+  50% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes tail-wag {
+  0%,
+  100% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes paw-tap-left {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes paw-tap-right {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ---------- spin style ---------- */
+
+@keyframes body-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes head-nod-fast {
+  0%,
+  100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes tail-whirl {
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes paw-flail {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-15deg);
+  }
+}
+
+/* ---------- apply: groove ---------- */
+
+.dancing-cat.style-groove.is-playing .cat-body-group {
+  animation: body-sway 1.4s ease-in-out infinite;
+}
+.dancing-cat.style-groove.is-playing .cat-head-group {
+  animation: head-bob 1.4s ease-in-out infinite;
+}
+.dancing-cat.style-groove.is-playing .cat-tail {
+  animation: tail-wag 1.1s ease-in-out infinite;
+}
+.dancing-cat.style-groove.is-playing .cat-paw-left {
+  animation: paw-tap-left 1.4s ease-in-out infinite;
+}
+.dancing-cat.style-groove.is-playing .cat-paw-right {
+  animation: paw-tap-right 1.4s ease-in-out infinite;
+}
+
+/* ---------- apply: spin ---------- */
+
+.dancing-cat.style-spin.is-playing .cat-body-group {
+  animation: body-spin 1.8s linear infinite;
+}
+.dancing-cat.style-spin.is-playing .cat-head-group {
+  animation: head-nod-fast 0.7s ease-in-out infinite;
+}
+.dancing-cat.style-spin.is-playing .cat-tail {
+  animation: tail-whirl 0.6s ease-in-out infinite;
+}
+.dancing-cat.style-spin.is-playing .cat-paw-left,
+.dancing-cat.style-spin.is-playing .cat-paw-right {
+  animation: paw-flail 0.7s ease-in-out infinite;
+}
+
+/* ---------- apply: shared (both styles) ---------- */
+
+.dancing-cat.is-playing .cat-ear-left {
+  animation: ear-twitch-left 2.8s ease-in-out infinite;
+}
+.dancing-cat.is-playing .cat-ear-right {
+  animation: ear-twitch-right 2.8s ease-in-out infinite;
+}
+.dancing-cat.is-playing .cat-eye {
+  animation: eye-blink 3.6s ease-in-out infinite;
+}
+.dancing-cat.is-playing .cat-shadow {
+  animation: shadow-pulse 1.4s ease-in-out infinite;
+}
+.dancing-cat.is-playing .cat-note-1 {
+  animation: note-float 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+.dancing-cat.is-playing .cat-note-2 {
+  animation: note-float 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+.dancing-cat.is-playing .cat-note-3 {
+  animation: note-float 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* ---------- speed variants ---------- */
+
+.dancing-cat.speed-slow.is-playing .cat-body-group,
+.dancing-cat.speed-slow.is-playing .cat-head-group,
+.dancing-cat.speed-slow.is-playing .cat-paw-left,
+.dancing-cat.speed-slow.is-playing .cat-paw-right,
+.dancing-cat.speed-slow.is-playing .cat-shadow,
+.dancing-cat.speed-slow.is-playing .cat-note-1,
+.dancing-cat.speed-slow.is-playing .cat-note-2,
+.dancing-cat.speed-slow.is-playing .cat-note-3 {
+  animation-duration: 2.2s;
+}
+.dancing-cat.speed-slow.is-playing .cat-tail {
+  animation-duration: 1.8s;
+}
+
+.dancing-cat.speed-fast.is-playing .cat-body-group,
+.dancing-cat.speed-fast.is-playing .cat-head-group,
+.dancing-cat.speed-fast.is-playing .cat-paw-left,
+.dancing-cat.speed-fast.is-playing .cat-paw-right,
+.dancing-cat.speed-fast.is-playing .cat-shadow,
+.dancing-cat.speed-fast.is-playing .cat-note-1,
+.dancing-cat.speed-fast.is-playing .cat-note-2,
+.dancing-cat.speed-fast.is-playing .cat-note-3 {
+  animation-duration: 0.7s;
+}
+.dancing-cat.speed-fast.is-playing .cat-tail {
+  animation-duration: 0.55s;
+}
+
+/* ---------- paused state ---------- */
+
+.dancing-cat.is-paused .cat-body-group,
+.dancing-cat.is-paused .cat-head-group,
+.dancing-cat.is-paused .cat-ear-left,
+.dancing-cat.is-paused .cat-ear-right,
+.dancing-cat.is-paused .cat-tail,
+.dancing-cat.is-paused .cat-paw-left,
+.dancing-cat.is-paused .cat-paw-right,
+.dancing-cat.is-paused .cat-eye,
+.dancing-cat.is-paused .cat-shadow {
+  animation: none;
+  transition: transform 0.4s ease-out;
+  transform: none;
+}
+
+.dancing-cat.is-paused .cat-note {
+  animation: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dancing-cat.is-playing .cat-body-group,
+  .dancing-cat.is-playing .cat-head-group,
+  .dancing-cat.is-playing .cat-ear-left,
+  .dancing-cat.is-playing .cat-ear-right,
+  .dancing-cat.is-playing .cat-tail,
+  .dancing-cat.is-playing .cat-paw-left,
+  .dancing-cat.is-playing .cat-paw-right,
+  .dancing-cat.is-playing .cat-eye,
+  .dancing-cat.is-playing .cat-shadow {
+    animation-duration: 4s;
+  }
+
+  .dancing-cat.is-playing .cat-note {
+    animation: none;
+    opacity: 0;
+  }
+}

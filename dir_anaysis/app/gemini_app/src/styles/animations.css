@@ -1,0 +1,180 @@
+/* 고양이가 서 있는 무대: 크기와 중앙 정렬을 담당 */
+.cat-stage {
+  position: relative;
+  width: min(70vw, 300px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat {
+  width: 100%;
+  height: 100%;
+  transform-origin: 150px 270px; /* 발밑을 기준으로 통통 튀도록 */
+  will-change: transform;
+}
+
+.cat-shadow {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  width: 55%;
+  height: 8%;
+  background: rgba(90, 60, 40, 0.35);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* --dance-speed 는 DancingCat 컴포넌트에서 inline style 로 주입되는 배속 값 (0.5 ~ 2) */
+.is-dancing .cat {
+  animation: cat-bounce calc(0.6s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat-shadow {
+  animation: cat-shadow-pulse calc(0.6s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__ear--left {
+  transform-origin: 100px 100px;
+  animation: cat-ear-wiggle-left calc(0.9s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__ear--right {
+  transform-origin: 200px 100px;
+  animation: cat-ear-wiggle-right calc(0.9s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__tail {
+  transform-origin: 232px 122px;
+  animation: cat-tail-wag calc(0.5s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__paw--left {
+  transform-origin: 115px 245px;
+  animation: cat-paw-left calc(0.6s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__paw--right {
+  transform-origin: 185px 245px;
+  animation: cat-paw-right calc(0.6s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__eye--left,
+.is-dancing .cat__eye--right {
+  animation: cat-blink calc(2.4s / var(--dance-speed, 1)) ease-in-out infinite;
+}
+
+.is-dancing .cat__eye--left {
+  transform-origin: 122px 142px;
+}
+
+.is-dancing .cat__eye--right {
+  transform-origin: 178px 142px;
+}
+
+@keyframes cat-bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  25% {
+    transform: translateY(-16px) rotate(-6deg) scale(1.03, 0.97);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg) scale(0.97, 1.03);
+  }
+  75% {
+    transform: translateY(-16px) rotate(6deg) scale(1.03, 0.97);
+  }
+}
+
+@keyframes cat-shadow-pulse {
+  0%,
+  50%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.35;
+  }
+  25%,
+  75% {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.18;
+  }
+}
+
+@keyframes cat-ear-wiggle-left {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes cat-ear-wiggle-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes cat-tail-wag {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes cat-paw-left {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-10deg);
+  }
+}
+
+@keyframes cat-paw-right {
+  0%,
+  100% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes cat-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* 모션 최소화를 선호하는 사용자를 위한 접근성 대응 */
+@media (prefers-reduced-motion: reduce) {
+  .is-dancing .cat,
+  .is-dancing .cat-shadow,
+  .is-dancing .cat__ear--left,
+  .is-dancing .cat__ear--right,
+  .is-dancing .cat__tail,
+  .is-dancing .cat__paw--left,
+  .is-dancing .cat__paw--right,
+  .is-dancing .cat__eye--left,
+  .is-dancing .cat__eye--right {
+    animation: none;
+  }
+}
