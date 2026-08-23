@@ -11,3 +11,5 @@
 | **금** | 고양이 웹 페이지를 만들고 공개하기 | <small>1. 고양이가 나오는 웹 페이지 생성<br>2. 만든 웹 페이지를 인터넷에 올리고 확인하기</small> |
 | **주말** | 클로드 코드 vs 제미나이 CLI | <small>비교 분석 및 특징 이해</small> | 
 
+# cat-dancing-page
+# cat-dancing-page
